@@ -1,0 +1,111 @@
+<div data-sly-test="${wcmmode.edit}" class="cq-placeholder">${'Click edit to configure the Contact Us Form' @ i18n}</div>
+<div id="contactUs-form-container">
+    <div class="container component text-component form-section user-section">
+        <div id="contact-us-form" class="text-block">
+            <h2>${properties.formHeading ? properties.formHeading : 'Contact Alliances' @ i18n}</h2>
+            <form id="contactUs-form" class="pure-form pure-form-stacked" novalidate action="/bin/prm/contactUsEmail" method="POST">
+                <p class="input-required-mark">* ${properties.requiredLabel ? properties.requiredLabel : 'Required Field' @i18n}</p>
+
+                <!--/* ALERT MESSAGE */-->
+                <div id="contactus-form-alert" class="alert alert-danger alert-dismissible fade in" role="alert" style="display: none">
+                </div>
+
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-3-4 pure-u-lg-2-3 container-hori-pad-sm">
+                        <!-- fields -->
+                        <div class="pure-g">
+                            <!--Contact Name-->
+                            <div class="pure-u-1">
+                                <div class="form-group">
+                                    <label for="contactName">${properties.contactName ? properties.contactName : 'Contact Name' @ i18n}<span class="input-required-mark">*</span></label>
+                                    <input id="contactName" class="form-control" name="contactName" placeholder="${properties.contactName ? properties.contactName : 'Contact Name' @ i18n}" type="text" required />
+                                </div>
+                            </div>
+
+                            <!-- Company Name-->
+                            <div class="pure-u-1">
+                                <div class="form-group">
+                                    <label for="companyName">${properties.companyName ? properties.companyName : 'Company Name' @ i18n}<span class="input-required-mark">*</span></label>
+                                    <input id="companyName" class="form-control" name="companyName" placeholder="${properties.companyName ? properties.companyName : 'Company Name' @ i18n}" type="text" required />
+                                </div>
+                            </div>
+
+                            <!--Email-->
+                            <div class="pure-u-1">
+                                <div class="form-group">
+                                    <label for="fromEmail">${properties.email ? properties.email : 'Email' @ i18n}<span class="input-required-mark">*</span></label>
+                                    <input id="fromEmail" class="form-control" name="fromEmail" placeholder="${properties.email ? properties.email : 'Email' @ i18n}" type="email" required />
+                                </div>
+                            </div>
+
+                            <!--Phone-->
+                            <div class="pure-u-1">
+                                <div class="form-group">
+                                    <label for="phone">${properties.phone ? properties.phone : 'Phone' @ i18n}</label>
+                                    <input id="phone" class="form-control" name="phone" placeholder="${properties.phone ? properties.phone : 'Phone' @ i18n}" type="text" />
+                                </div>
+                            </div>
+
+                            <!--Subject-->
+                            <div class="pure-u-1">
+                                <div class="form-group">
+                                    <label for="subject">${properties.subject ? properties.subject : 'Subject' @ i18n}<span class="input-required-mark">*</span></label>
+                                    <input class="form-control" id="subject" name="subject" placeholder="${properties.subject ? properties.subject : 'Subject' @ i18n}" type="text" required />
+                                </div>
+                            </div>
+
+                            <!--Input Assistance-->
+                            <div class="pure-u-1">
+                                <div class="form-group">
+                                    <label for="asistanceType">${properties.assistanceType ? properties.assistanceType : 'What type of assistance do you need?' @ i18n}<span class="input-required-mark">*</span></label>
+                                    <div class="select-wrapper">
+                                        <select id="asistanceType" data-state class="form-control" name="assistanceType" required >
+                                            <option value="--Please select Assistance type--">--Please select Assistance type--</option>
+                                            <option value="Alliance Agreement">Alliance Agreement</option>
+                                            <option value="Connect with Field Sales">Connect with Field Sales</option>
+                                            <option value="Development/OEM Use Question">Development/OEM Use Question</option>
+                                            <option value="Global Customer Support">Global Customer Support</option>
+                                            <option value="Informatica University Question">Informatica University Question</option>
+                                            <option value="Informatica Professional Service Question">Informatica Professional Service Question</option>
+                                            <option value="Marketing Question/Request">Marketing Question/Request</option>
+                                            <option value="Partner Development Fund (PDF) question/request">Partner Development Fund (PDF) question/request</option>
+                                            <option value="Register an Opportunity">Register an Opportunity</option>
+                                            <option value="Software Request">Software Request</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--User detail Description or comments-->
+                            <div class="pure-u-1">
+                                <div class="form-group">
+                                    <label for="description">${properties.description ? properties.description : 'Please describe in detail?' @ i18n}<span class="input-required-mark">*</span></label>
+                                    <textarea class="form-control" cols="40" rows="6" id="description"  name="description" placeholder="${properties.description ? properties.description : 'Please describe in detail?' @ i18n}" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="pure-u-1">
+                                <div class="form-group">
+                                    <div id="contact-us-recaptcha" class="contact-us-recaptcha" data-sly-resource="${'captcha' @ resourceType='/apps/informatica-prm/components/form/recaptcha'}"></div>
+                                </div>
+                            </div>
+                            <!--Form Action Submit-->
+                            <div class="pure-u-1">
+                                <div class="contactus-form btn-group">
+                                    <button id="contactUsSubmit" type="submit" value="${'Submit' @ i18n}" class="btn btn-yellow btn-submit" disabled>${'SUBMIT' @ i18n}</button>
+                                </div>
+                            </div>
+
+                            <!--Redirect parameter-->
+                            <sly data-sly-use.link="${'com.informatica.core.model.LinkHelper' @path=properties.redirectUrl}">
+                                <input type="hidden" name="redirectUrl" value="${link.url}">
+                            </sly>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
